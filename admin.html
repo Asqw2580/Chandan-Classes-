@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<h2>Admin Dashboard</h2>
+
+</nav>
+
+<div class="card">
+
+<h2>📚 Upload Notes</h2>
+
+<input type="file">
+
+<button>Upload Notes</button>
+
+</div>
+
+<div class="card">
+
+<h2>🎥 Upload Video</h2>
+
+<input type="file">
+
+<button>Upload Video</button>
+
+</div>
+
+<div class="card">
+
+<h2>💳 Payment Records</h2>
+
+<p>Student Payments Here</p>
+
+</div>
+
+<div class="card">
+
+<h2>🎥 Live Class Control</h2>
+
+<button>Start Live Class</button>
+
+</div>
+
+<div class="card">
+
+<h2>👨‍🎓 Students List</h2>
+
+<div id="students"></div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCF8BwCm4Fa3TrmV7wmGOs1-cFWlkW0_lE",
+
+authDomain: "chandan-classes-d0f0e.firebaseapp.com",
+
+projectId: "chandan-classes-d0f0e",
+
+storageBucket: "chandan-classes-d0f0e.firebasestorage.app",
+
+messagingSenderId: "802279164033",
+
+appId: "1:802279164033:web:931d4c3c8bf9f3d9c9e580",
+
+measurementId: "G-S8XFS7XC2N"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+async function loadStudents(){
+
+const querySnapshot =
+await getDocs(
+collection(db,"students")
+);
+
+const studentsDiv =
+document.getElementById("students");
+
+querySnapshot.forEach((doc)=>{
+
+const data = doc.data();
+
+studentsDiv.innerHTML += `
+
+<div class="card">
+
+<h3>${data.name}</h3>
+
+<p>${data.email}</p>
+
+<p>${data.mobile}</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadStudents();
+
+</script>
+
+</body>
+</html>

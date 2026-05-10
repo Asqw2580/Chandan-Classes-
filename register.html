@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Register</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Create Account</h2>
+
+<input type="text"
+id="name"
+placeholder="Enter Full Name">
+
+<input type="text"
+id="mobile"
+placeholder="Enter Mobile Number">
+
+<input type="email"
+id="email"
+placeholder="Enter Email">
+
+<input type="password"
+id="password"
+placeholder="Enter Password">
+
+<button onclick="register()">
+Register
+</button>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+addDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCF8BwCm4Fa3TrmV7wmGOs1-cFWlkW0_lE",
+
+authDomain: "chandan-classes-d0f0e.firebaseapp.com",
+
+projectId: "chandan-classes-d0f0e",
+
+storageBucket: "chandan-classes-d0f0e.firebasestorage.app",
+
+messagingSenderId: "802279164033",
+
+appId: "1:802279164033:web:931d4c3c8bf9f3d9c9e580",
+
+measurementId: "G-S8XFS7XC2N"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+window.register = function(){
+
+const name =
+document.getElementById("name").value;
+
+const mobile =
+document.getElementById("mobile").value;
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+createUserWithEmailAndPassword(
+auth,
+email,
+password
+)
+
+.then(async (userCredential)=>{
+
+await addDoc(
+collection(db,"students"),
+{
+
+name:name,
+
+mobile:mobile,
+
+email:email
+
+}
+
+);
+
+alert(
+"Registration Successful"
+);
+
+})
+
+.catch((error)=>{
+
+alert(error.message);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
