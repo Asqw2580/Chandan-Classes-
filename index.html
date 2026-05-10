@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Firebase Login</title>
+<title>Chandan Classes</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -11,68 +11,48 @@
 
 <body>
 
-<div class="box">
+<nav>
 
-<h2>Login</h2>
+<h2>Chandan Classes</h2>
 
-<input type="email" id="email" placeholder="Enter Email">
+<div>
 
-<input type="password" id="password" placeholder="Enter Password">
+<a href="login.html">Login</a>
 
-<button onclick="login()">Login</button>
+<a href="register.html">Register</a>
+
+<a href="courses.html">Courses</a>
 
 </div>
 
-<script type="module">
+</nav>
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+<section class="hero">
 
-import {
-getAuth,
-signInWithEmailAndPassword
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+<h1>Welcome to Chandan Classes 🚀</h1>
 
-const firebaseConfig = {
+<p>
+Online Learning Platform
+</p>
 
-apiKey: "PASTE_API_KEY",
-authDomain: "PASTE_DOMAIN",
-projectId: "PASTE_PROJECT_ID",
-storageBucket: "PASTE_BUCKET",
-messagingSenderId: "XXXX",
-appId: "XXXX"
+<a href="courses.html">
 
-};
+<button>
+Start Learning
+</button>
 
-const app = initializeApp(firebaseConfig);
+</a>
 
-const auth = getAuth(app);
+</section>
 
-window.login = function(){
+<footer>
 
-const email =
-document.getElementById("email").value;
+<p>
+© 2026 Chandan Classes
+</p>
 
-const password =
-document.getElementById("password").value;
-
-signInWithEmailAndPassword(auth,email,password)
-
-.then((userCredential)=>{
-
-alert("Login Successful");
-
-})
-
-.catch((error)=>{
-
-alert(error.message);
-
-});
-
-}
-
-</script>
+</footer>
 
 </body>
+
 </html>
