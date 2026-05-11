@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>User Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<h2>Student Dashboard</h2>
+
+<button onclick="logout()">
+Logout
+</button>
+
+</nav>
+
+<div class="card">
+
+<h2>Welcome Student 🎉</h2>
+
+<p>
+Your courses, videos aur notes yaha dikhenge.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📹 My Courses</h2>
+
+<p>Mathematics</p>
+
+<p>Computer Science</p>
+
+</div>
+
+<div class="card">
+
+<h2>📄 Notes</h2>
+
+<a href="notes.pdf">
+
+<button>
+Download Notes
+</button>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>🔴 Live Classes</h2>
+
+<p>
+Daily Live Session
+</p>
+
+<a
+href="https://meet.google.com/knu-zxtv-uau"
+target="_blank">
+
+<button>
+Join Live Class
+</button>
+
+</a>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCF8BwCm4Fa3TrmV7wmGOs1-cFWlkW0_lE",
+
+authDomain: "chandan-classes-d0f0e.firebaseapp.com",
+
+projectId: "chandan-classes-d0f0e",
+
+storageBucket: "chandan-classes-d0f0e.firebasestorage.app",
+
+messagingSenderId: "802279164033",
+
+appId: "1:802279164033:web:931d4c3c8bf9f3d9c9e580",
+
+measurementId: "G-S8XFS7XC2N"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+window.logout = function(){
+
+signOut(auth)
+
+.then(()=>{
+
+alert("Logout Successful");
+
+window.location.href = "login.html";
+
+})
+
+.catch((error)=>{
+
+alert(error.message);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
