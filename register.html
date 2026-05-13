@@ -1,133 +1,498 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Register</title>
+<title>Education Point - Premium OTP Register</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+overflow-x:hidden;
+position:relative;
+
+background:
+linear-gradient(
+135deg,
+#020617 0%,
+#0f172a 20%,
+#172554 45%,
+#2563eb 70%,
+#020617 100%
+);
+}
+
+/* GLOW */
+
+body::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:rgba(59,130,246,0.25);
+filter:blur(120px);
+top:-120px;
+left:-120px;
+border-radius:50%;
+}
+
+body::after{
+content:"";
+position:absolute;
+width:450px;
+height:450px;
+background:rgba(37,99,235,0.20);
+filter:blur(120px);
+bottom:-120px;
+right:-100px;
+border-radius:50%;
+}
+
+/* CONTAINER */
+
+.container{
+position:relative;
+z-index:10;
+
+width:100%;
+max-width:430px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,0.12);
+
+border-radius:35px;
+
+padding:35px 25px;
+
+box-shadow:
+0 10px 40px rgba(0,0,0,0.5),
+0 0 20px rgba(37,99,235,0.25);
+}
+
+/* ===== FIXED LOGO ===== */
+
+.logo{
+width:100%;
+text-align:center;
+margin-bottom:20px;
+overflow:visible;
+}
+
+.logo h1{
+
+font-size:58px;
+font-weight:900;
+
+line-height:1.1;
+
+display:block;
+
+white-space:nowrap;
+
+/* FIX */
+
+letter-spacing:-1px;
+
+padding-right:25px;
+
+/* GRADIENT */
+
+background:linear-gradient(
+90deg,
+#38bdf8 0%,
+#2563eb 50%,
+#ffffff 100%
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/* SUBTITLE */
+
+.subtitle{
+text-align:center;
+font-size:17px;
+line-height:1.8;
+color:#e5e7eb;
+margin-bottom:30px;
+}
+
+/* TAB */
+
+.tab-box{
+display:flex;
+background:rgba(255,255,255,0.08);
+padding:6px;
+border-radius:18px;
+margin-bottom:28px;
+}
+
+.tab{
+width:50%;
+padding:14px;
+
+border:none;
+border-radius:14px;
+
+background:transparent;
+
+color:white;
+
+font-size:15px;
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.active{
+background:linear-gradient(to right,#2563eb,#38bdf8);
+}
+
+/* FORM */
+
+.form{
+display:none;
+}
+
+.show{
+display:block;
+}
+
+.input-box{
+margin-bottom:22px;
+}
+
+.input-box label{
+display:block;
+margin-bottom:10px;
+font-size:15px;
+font-weight:600;
+color:white;
+}
+
+.input-box input{
+width:100%;
+padding:18px 20px;
+
+border:none;
+outline:none;
+
+border-radius:22px;
+
+background:rgba(255,255,255,0.10);
+
+border:1px solid rgba(255,255,255,0.08);
+
+font-size:16px;
+color:white;
+}
+
+.input-box input::placeholder{
+color:#d1d5db;
+}
+
+/* OTP BUTTON */
+
+.otp-btn{
+width:100%;
+padding:15px;
+
+border:none;
+border-radius:18px;
+
+font-size:16px;
+font-weight:700;
+
+cursor:pointer;
+
+background:rgba(255,255,255,0.10);
+
+color:white;
+
+margin-top:-5px;
+margin-bottom:20px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+transition:0.3s;
+}
+
+.otp-btn:hover{
+background:rgba(255,255,255,0.18);
+}
+
+/* REGISTER BUTTON */
+
+.register-btn{
+width:100%;
+padding:18px;
+
+border:none;
+border-radius:24px;
+
+font-size:21px;
+font-weight:700;
+
+cursor:pointer;
+
+background:linear-gradient(
+to right,
+#2563eb,
+#38bdf8
+);
+
+color:white;
+
+margin-top:10px;
+
+box-shadow:
+0 10px 20px rgba(37,99,235,0.35);
+
+transition:0.3s;
+}
+
+.register-btn:hover{
+transform:scale(1.03);
+}
+
+/* FOOTER */
+
+.footer{
+margin-top:20px;
+text-align:center;
+font-size:14px;
+line-height:1.7;
+color:#e5e7eb;
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+.logo h1{
+font-size:50px;
+padding-right:18px;
+}
+
+.subtitle{
+font-size:16px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-<h2>Create Account</h2>
+<!-- FULL EDUCATION POINT -->
 
-<input type="text"
-id="name"
-placeholder="Enter Full Name">
+<div class="logo">
+<h1>Education</h1>
+<h1>Point</h1>
+</div>
 
-<input type="text"
-id="mobile"
-placeholder="Enter Mobile Number">
+<div class="subtitle">
+Create Your Premium Account 🚀<br>
+Secure OTP Verification System
+</div>
 
-<input type="email"
-id="email"
-placeholder="Enter Email">
+<!-- TAB -->
 
-<input type="password"
-id="password"
-placeholder="Enter Password">
+<div class="tab-box">
 
-<button onclick="register()">
-Register
+<button class="tab active" onclick="showForm('student')">
+Student Register
+</button>
+
+<button class="tab" onclick="showForm('admin')">
+Admin Register
 </button>
 
 </div>
 
-<script type="module">
+<!-- STUDENT FORM -->
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+<form id="studentForm" class="form show">
 
-import {
-getAuth,
-createUserWithEmailAndPassword
+<div class="input-box">
+<label>Full Name</label>
+<input type="text" placeholder="Enter full name">
+</div>
+
+<div class="input-box">
+<label>Email Address</label>
+<input type="email" placeholder="Enter email address">
+</div>
+
+<div class="input-box">
+<label>Mobile Number</label>
+<input type="number" placeholder="Enter mobile number">
+</div>
+
+<button type="button" class="otp-btn" onclick="sendOTP()">
+Send OTP 📩
+</button>
+
+<div class="input-box">
+<label>Enter OTP</label>
+<input type="number" placeholder="Enter OTP">
+</div>
+
+<div class="input-box">
+<label>Create Password</label>
+<input type="password" placeholder="Create password">
+</div>
+
+<div class="input-box">
+<label>Confirm Password</label>
+<input type="password" placeholder="Confirm password">
+</div>
+
+<button type="submit" class="register-btn">
+Register Student 🎓
+</button>
+
+</form>
+
+<!-- ADMIN FORM -->
+
+<form id="adminForm" class="form">
+
+<div class="input-box">
+<label>Admin Name</label>
+<input type="text" placeholder="Enter admin name">
+</div>
+
+<div class="input-box">
+<label>Admin Email</label>
+<input type="email" placeholder="Enter admin email">
+</div>
+
+<div class="input-box">
+<label>Mobile Number</label>
+<input type="number" placeholder="Enter mobile number">
+</div>
+
+<div class="input-box">
+<label>Secret Admin Key</label>
+<input type="password" placeholder="Enter secret key">
+</div>
+
+<button type="button" class="otp-btn" onclick="sendOTP()">
+Send OTP 📩
+</button>
+
+<div class="input-box">
+<label>Enter OTP</label>
+<input type="number" placeholder="Enter OTP">
+</div>
+
+<div class="input-box">
+<label>Create Password</label>
+<input type="password" placeholder="Create password">
+</div>
+
+<div class="input-box">
+<label>Confirm Password</label>
+<input type="password" placeholder="Confirm password">
+</div>
+
+<button type="submit" class="register-btn">
+Register Admin 🔐
+</button>
+
+</form>
+
+<div class="footer">
+Education Point Premium Secure UI ✨
+</div>
+
+</div>
+
+<script>
+
+const tabs = document.querySelectorAll(".tab");
+
+function showForm(type){
+
+tabs.forEach(tab=>{
+tab.classList.remove("active");
+});
+
+if(type === "student"){
+
+document.getElementById("studentForm").classList.add("show");
+document.getElementById("adminForm").classList.remove("show");
+
+tabs[0].classList.add("active");
+
+}else{
+
+document.getElementById("adminForm").classList.add("show");
+document.getElementById("studentForm").classList.remove("show");
+
+tabs[1].classList.add("active");
+
 }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-import {
-getFirestore,
-collection,
-addDoc
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyCF8BwCm4Fa3TrmV7wmGOs1-cFWlkW0_lE",
-
-authDomain: "chandan-classes-d0f0e.firebaseapp.com",
-
-projectId: "chandan-classes-d0f0e",
-
-storageBucket: "chandan-classes-d0f0e.firebasestorage.app",
-
-messagingSenderId: "802279164033",
-
-appId: "1:802279164033:web:931d4c3c8bf9f3d9c9e580",
-
-measurementId: "G-S8XFS7XC2N"
-
-};
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-
-const db = getFirestore(app);
-
-window.register = function(){
-
-const name =
-document.getElementById("name").value;
-
-const mobile =
-document.getElementById("mobile").value;
-
-const email =
-document.getElementById("email").value;
-
-const password =
-document.getElementById("password").value;
-
-createUserWithEmailAndPassword(
-auth,
-email,
-password
-)
-
-.then(async (userCredential)=>{
-
-await addDoc(
-collection(db,"students"),
-{
-
-name:name,
-
-mobile:mobile,
-
-email:email
 
 }
 
-);
+/* OTP */
 
-alert(
-"Registration Successful"
-);
+function sendOTP(){
 
-})
+let otp = Math.floor(100000 + Math.random() * 900000);
 
-.catch((error)=>{
+alert("Your OTP is : " + otp);
 
-alert(error.message);
+}
+
+/* REGISTER */
+
+document.getElementById("studentForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Student Registered Successfully 🎓");
 
 });
 
-}
+document.getElementById("adminForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Admin Registered Successfully 🔐");
+
+});
 
 </script>
 
